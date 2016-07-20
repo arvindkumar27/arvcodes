@@ -1,1 +1,2 @@
 Checking callback 
+This is new text
