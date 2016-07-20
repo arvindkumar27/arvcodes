@@ -90,33 +90,7 @@ function array_to_xml( $data, &$xml_data ) {
         return substr($queryString, 0, -1 * $delimiterLength);
     }
 
-	/*
- $query = array(
-            'VPSProtocol' => $settings->getProtocolVersion(),
-            'Vendor' => $settings->getVendorName(),
-            'VendorTxCode' => vendorTxCode(),
-            'Amount' => number_format($basket->getAmount(), 2, '.', ''),
-            'Currency' => $settings->getCurrency(),
-            'Description' => $basket->getDescription(),
-            'CustomerName' => $billingAddress->firstname . ' ' . $billingAddress->lastname,
-            'CustomerEMail' => $billingAddress->email,
-            'VendorEMail' => $settings->getVendorEmail(),
-            'SendEMail' => $settings->getSendEmail(),
-            'eMailMessage' => $settings->getEmailMessage(),
-            'BillingSurname' => $billingAddress->lastname,
-            'BillingFirstnames' => $billingAddress->firstname,
-            'BillingAddress1' => $billingAddress->address1,
-            'BillingAddress2' => $billingAddress->address2,
-            'BillingCity' => $billingAddress->city,
-            'BillingPostCode' => $billingAddress->getPostCode(),
-            'BillingCountry' => $billingAddress->country,
-            'BillingPhone' => $billingAddress->phone,
-            'ApplyAVSCV2' => $settings->getApplyAvsCv2(),
-            'Apply3DSecure' => $settings->getApply3dSecure(),
-            'AllowGiftAid' => $settings->getAllowGiftAid(),
-            'BillingAgreement' => $settings->getBillingAgreement()
-        );
-		*/
+
 	
 
 $SagepayItem = array();
@@ -201,17 +175,6 @@ $customer = array("customerMiddleInitial" => "", "customerBirth" => "", "custome
 					"customerId" => 2);
 
 
-/*
-// creating object of SimpleXMLElement
-$xml_data = new SimpleXMLElement('<basket></basket>');
-// function call to convert array to xml
-array_to_xml($basket,$xml_data);
-//saving generated xml file; 
-$basket_xml = $xml_data->asXML("basket_new.xml");
-print"<pre>";
-		print_r($basket_xml);
-die("b");
-*/
 
 
 // creating object of SimpleXMLElement
@@ -222,34 +185,6 @@ array_to_xml($customer,$xml_data);
 $CustomerXML = $xml_data->asXML();
 
 
-$basket_str = "<basket>
-<agentId>protxross</agentId>
-<items>
-<item>
-<description>Shaolin Soccer</description>
-<productSku>DVD1SKU</productSku>
-<productCode>1236871</productCode>
-<quantity>1</quantity>
-<unitNetAmount>9.95</unitNetAmount>
-<unitTaxAmount>0.25</unitTaxAmount>
-<unitGrossAmount>10.20</unitGrossAmount>
-<totalGrossAmount>10.20</totalGrossAmount>
-</item>
-<item>
-<description>Batman - The Dark Knight</description>
-<productSku>DVD2SKU</productSku>
-<productCode>9256370</productCode>
-<quantity>2</quantity>
-<unitNetAmount>10.99</unitNetAmount>
-<unitTaxAmount>0.50</unitTaxAmount>
-<unitGrossAmount>11.49</unitGrossAmount>
-<totalGrossAmount>22.98</totalGrossAmount>
-</item>
-</items>
-<deliveryNetAmount>1.50</deliveryNetAmount>
-<deliveryTaxAmount>0.05</deliveryTaxAmount>
-<deliveryGrossAmount>1.55</deliveryGrossAmount>
-</basket>";
 
 
 // creating object of SimpleXMLElement
@@ -267,16 +202,7 @@ array_to_xml($surcharges,$xml_data);
 $SurchargeXML = $xml_data->asXML();
 		
 	
-	/*   *
-			
-		print"<pre>";
-		print_r($basket);
-		print"<pre>";
-		print_r($basket_xml);
-		print"<pre>";
-		print_r($SurchargeXML);
-		die("curl");
-		//   */
+
 					
 $data_arr = array(
 					"VPSProtocol" => "3.00",
@@ -380,33 +306,10 @@ $data_arr = array(
                 $NextURL =  $output['NextURL'];
         }
         
-print"<pre>";
-print_r($output);
-print"</pre>";
-//die; 
+    print"<pre>";
+    print_r($output);
+    print"</pre>";
 
-                
-        #$result = explode("NextURL=", $rawresponse);
-        #$NextURL =  trim($result[1]);
-
-        /*   *
-        print"<pre>";
-        print_r($result);
-        print"<pre>";
-
-
-        print"<pre>";
-        print_r($rawresponse);
-        print"<pre>";
-        //print_r($_SESSION);		
-        print"<pre>";
-        print_r($data_arr);
-        print"<pre>";
-        print_r($ttl);
-        print"<pre>";
-        print_r($caCertPath);
-        //die("curl");
-        //   */
 ?>
 <?php if($NextURL){ ?>
 <div id="content">
